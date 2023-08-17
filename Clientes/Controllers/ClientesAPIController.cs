@@ -35,11 +35,8 @@ namespace Clientes.Controllers
             var cliente = new Cliente()
             {
                 Id = Guid.NewGuid(),
-                Nome = addClienteRequest.Nome,
-                Email = addClienteRequest.Email,
-                Create_Client = DateTime.Now,
-                Endereco = addClienteRequest.Endereco
-
+                Name = addClienteRequest.Name,
+                Created_at = DateTime.Now
             };
 
             await dbContext.Clientes.AddAsync(cliente);
@@ -56,13 +53,9 @@ namespace Clientes.Controllers
 
             if (cliente != null)
             {
-                cliente.Nome = updateClienteRequest.Nome;
-                cliente.Email = updateClienteRequest.Email;
-                cliente.DataAtualizacao = DateTime.Now;
-                cliente.Endereco = updateClienteRequest.Endereco;
-
+                cliente.Name = updateClienteRequest.Name;
+                cliente.Updated_at = DateTime.Now;
                 await dbContext.SaveChangesAsync();
-
 
                 return Ok();
               
